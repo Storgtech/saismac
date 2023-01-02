@@ -6,7 +6,7 @@ import { AskingConfirmation } from '../components/AskingConfirmation/AskingConfi
 import { Header } from '../components/Header';
 import { transportes } from '../mocks/transportes';
 
-export default function Home() {
+export default function Transportes() {
 
     const [shouldDispalyAskingConfirmation, setShouldDisplayAskingConfirmation] = useState(false)
 
@@ -31,50 +31,53 @@ export default function Home() {
                                 </Link>
                             </div>
                         </div>
-
                         <div className='p-4'>
                             {transportes.map(car => (
-                                <Link href={`/transportes/${car.id}`}>
-                                    <div key={car.id} className="flex shadow-2xl bg-white my-1 p-1 gap-2 w-1/2 cursor-pointer">
-                                        <div className='max-h-40 w-[15vw] relative'>
-                                            <img src={car.avatarUrl} className="object-cover absolute top-0 left-0 w-full h-full" />
-                                        </div>
-                                        <div className='p-2 flex flex-1 flex-col'>
-                                            <div>
-                                                <b>Matricula:</b> <span>{car.matricula}</span>
+
+                                <div key={car.id} className="flex shadow-2xl bg-white my-1 p-1 gap-2 w-1/2 cursor-pointer">
+                                    <Link href={`/transportes/${car.id}`}>
+                                        <div className='flex gap-2 flex-1'>
+                                            <div className='max-h-40 w-[15vw] relative'>
+                                                <img src={car.avatarUrl} className="object-cover absolute top-0 left-0 w-full h-full" />
                                             </div>
-                                            <div>
-                                                <b>Marca:</b> <span>{car.marca}</span>
-                                            </div>
-                                            <div className='border-2 border-gray-200 h-1 w-full my-3 rounded-lg'></div>
-                                            <div>
-                                                <p className='font-bold text-xl'>Motorista</p>
+                                            <div className='p-2 flex flex-1 flex-col'>
                                                 <div>
-                                                    <b>Nome:</b> <span>{car?.motorista?.nome}</span>
+                                                    <b>Matricula:</b> <span>{car.matricula}</span>
                                                 </div>
                                                 <div>
-                                                    <b>BI:</b> <span>{car?.motorista?.BI}</span>
+                                                    <b>Marca:</b> <span>{car.marca}</span>
+                                                </div>
+                                                <div className='border-2 border-gray-200 h-1 w-full my-3 rounded-lg'></div>
+                                                <div>
+                                                    <p className='font-bold text-xl'>Motorista</p>
+                                                    <div>
+                                                        <b>Nome:</b> <span>{car?.motorista?.nome}</span>
+                                                    </div>
+                                                    <div>
+                                                        <b>BI:</b> <span>{car?.motorista?.BI}</span>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                         </div>
-                                        <div className='flex justify-end items-end'>
-                                            <div className="flex gap-3 p-2 bg-gray-300 rounded-xl">
-                                                <span className="cursor-pointer text-blue-600 hover:text-blue-900 transition duration-500">
-                                                    <PencilSimple />
-                                                </span>
-                                                <span
-                                                    className="cursor-pointer text-red-700 hover:text-red-900 transition duration-500"
-                                                    onClick={() => setShouldDisplayAskingConfirmation(true)}>
-                                                    <Trash />
-                                                </span>
-                                            </div>
+                                    </Link>
+                                    <div className='flex justify-end items-end'>
+                                        <div className="flex gap-3 p-2 bg-gray-300 rounded-xl">
+                                            <span className="cursor-pointer text-blue-600 hover:text-blue-900 transition duration-500">
+                                                <PencilSimple />
+                                            </span>
+                                            <span
+                                                className="cursor-pointer text-red-700 hover:text-red-900 transition duration-500"
+                                                onClick={() => setShouldDisplayAskingConfirmation(true)}>
+                                                <Trash />
+                                            </span>
                                         </div>
                                     </div>
+                                </div>
 
-                                </Link>
+
                             ))}
                         </div>
-
                     </div>
                 </div>
             </div>

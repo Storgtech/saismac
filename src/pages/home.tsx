@@ -1,51 +1,75 @@
-import Link from 'next/link'
-import { CurrencyDollarSimple, ShoppingCart, Taxi, Users } from 'phosphor-react'
-import { Header } from '../components/Header'
+import Link from 'next/link';
+import { PencilSimple, Trash } from 'phosphor-react';
+import { useState } from 'react';
+import { AsideMenu } from '../components/AsideMenu';
+import { AskingConfirmation } from '../components/AskingConfirmation/AskingConfirmation';
+import { Header } from '../components/Header';
+import { transportes } from '../mocks/transportes';
 
 export default function Home() {
+
+    const [shouldDispalyAskingConfirmation, setShouldDisplayAskingConfirmation] = useState(false)
+
+    const handleDelete = () => {
+
+    }
 
     return (
         <div className="flex h-screen w-full">
             <div className="flex flex-col w-full">
                 <Header />
-                <div className="flex justify-center gap-8 px-60 py-36">
-                    <Link href="/transportes">
-                        <div className='flex flex-col border-2 border-green-700 w-1/4 h-[30vh] rounded-lg shadow-2xl cursor-pointer hover:shadow-inner transition duration-500'>
-                            <header className='w-full bg-green-700 h-3 rounded-tl rounded-tr'></header>
-                            <span className='flex flex-1 justify-center items-center text-7xl text-green-900'>
-                                <Taxi />
-                            </span>
-                        </div>
-                    </Link>
+                <div className='flex flex-1 bg-gray-100'>
+                    <AsideMenu location="transportes" />
+                    <div className='flex-1 p-4'>
+                        {transportes.map(car => (
+                            <Link href={`/transportes/${car.id}`}>
+                                <div key={car.id} className="flex shadow-2xl bg-white my-1 p-1 gap-2 w-1/2 cursor-pointer">
+                                    <div className='max-h-40 w-[15vw] relative'>
+                                        <img src={car.avatarUrl} className="object-cover absolute top-0 left-0 w-full h-full" />
+                                    </div>
+                                    <div className='p-2 flex flex-1 flex-col'>
+                                        <div>
+                                            <b>Matricula:</b> <span>{car.matricula}</span>
+                                        </div>
+                                        <div>
+                                            <b>Marca:</b> <span>{car.marca}</span>
+                                        </div>
+                                        <div className='border-2 border-gray-200 h-1 w-full my-3 rounded-lg'></div>
+                                        <div>
+                                            <p className='font-bold text-xl'>Motorista</p>
+                                            <div>
+                                                <b>Nome:</b> <span>{car?.motorista?.nome}</span>
+                                            </div>
+                                            <div>
+                                                <b>BI:</b> <span>{car?.motorista?.BI}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='flex justify-end items-end'>
+                                        <div className="flex gap-3 p-2 bg-gray-300 rounded-xl">
+                                            <span className="cursor-pointer text-blue-600 hover:text-blue-900 transition duration-500">
+                                                <PencilSimple />
+                                            </span>
+                                            <span
+                                                className="cursor-pointer text-red-700 hover:text-red-900 transition duration-500"
+                                                onClick={() => setShouldDisplayAskingConfirmation(true)}>
+                                                <Trash />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <Link href="/funcionarios">
-                        <div className='flex flex-col border-2 border-indigo-900 w-1/4 h-[30vh] rounded-lg shadow-2xl cursor-pointer hover:shadow-inner transition duration-500'>
-                            <header className='w-full bg-indigo-900 h-3 rounded-tl rounded-tr'></header>
-                            <span className='flex flex-1 justify-center items-center text-7xl text-indigo-900'>
-                                <Users />
-                            </span>
-                        </div>
-                    </Link>
-
-                    <Link href="/incoming">
-                        <div className='flex flex-col border-2 border-pink-900 w-1/4 h-[30vh] rounded-lg shadow-2xl cursor-pointer hover:shadow-inner transition duration-500'>
-                            <header className='w-full bg-pink-900 h-3 rounded-tl rounded-tr'></header>
-                            <span className='flex flex-1 justify-center items-center text-7xl text-pink-900'>
-                                <CurrencyDollarSimple />
-                            </span>
-                        </div>
-                    </Link>
-
-                    <Link href="/outcoming">
-                        <div className='flex flex-col border-2 border-zinc-700 w-1/4 h-[30vh] rounded-lg shadow-2xl cursor-pointer hover:shadow-inner transition duration-500'>
-                            <header className='w-full bg-zinc-700 h-3 rounded-tl rounded-tr'></header>
-                            <span className='flex flex-1 justify-center items-center text-7xl text-zinc-700'>
-                                <ShoppingCart />
-                            </span>
-                        </div>
-                    </Link>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
+            {shouldDispalyAskingConfirmation && (
+                <AskingConfirmation
+                    label='Deseja eliminar esta viatura?'
+                    closeState={setShouldDisplayAskingConfirmation}
+                    execute={handleDelete} />
+            )}
         </div>
     )
 }

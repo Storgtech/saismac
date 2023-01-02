@@ -34,15 +34,15 @@ export default function Transporte() {
                     <div className='flex-1 p-4 min-w-[35vw]'>
                         <div className='flex flex-col p-2 bg-white shadow-2xl w-fit'>
                             <div>
-                                <img src={transporte.avatarUrl} className="object-cover" />
+                                <img src={transporte?.avatarUrl} className="object-cover" />
                             </div>
                             <div className='flex'>
                                 <div className='flex-1 py-2 px-4'>
                                     <div>
-                                        <b>Matricula:</b> <span>{transporte.matricula}</span>
+                                        <b>Matricula:</b> <span>{transporte?.matricula}</span>
                                     </div>
                                     <div>
-                                        <b>Marca:</b> <span>{transporte.marca}</span>
+                                        <b>Marca:</b> <span>{transporte?.marca}</span>
                                     </div>
                                     <div className='h-1 border-2 border-gray-200 my-1'></div>
                                     <div>

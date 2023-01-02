@@ -52,7 +52,7 @@ export default function Funcionario() {
                                     <div className='flex items-center gap-2'>
                                         <b>Transportes:</b>
                                         <div className='flex bg-gray-300 py-1 px-1 rounded-lg'>
-                                            <span className='border-r-2 border-r-gray-400 px-2'>{funcionario.transportes.length}</span>
+                                            <span className='border-r-2 border-r-gray-400 px-2'>{funcionario?.transportes.length}</span>
                                             <button className='flex items-center px-2 gap-1'>atribuir <Plus /></button>
                                         </div>
                                     </div>

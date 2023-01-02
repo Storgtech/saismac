@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { PencilSimple, Trash } from 'phosphor-react';
+import { PencilSimple, Plus, Trash } from 'phosphor-react';
 import { AsideMenu } from '../../components/AsideMenu';
 import { Header } from '../../components/Header';
 import { funcionarios } from '../../mocks/funcionarios';
@@ -11,8 +11,19 @@ export default function Funcionarios() {
                 <Header />
                 <div className='flex flex-1 bg-gray-100'>
                     <AsideMenu location="funcionarios" />
-                    <div className='flex flex-1 p-3'>
-                        <div>
+                    <div className='flex-1'>
+                        <div className='flex items-center gap-3 w-full bg-white p-4 py-2'>
+                            <h1 className='font-semibold text-xl'>Funcionarios</h1>
+                            <div>
+                                <Link href="/funcionarios/create">
+                                    <span className='bg-green-700 hover:bg-green-800 transition duration-700 flex items-center gap-2 py-1 px-2 rounded-lg text-white cursor-pointer'>
+                                        <Plus /> criar novo
+                                    </span>
+                                </Link>
+                            </div>
+                        </div>
+
+                        <div className='w-fit p-4'>
                             {funcionarios?.map(funcionario => (
                                 <Link key={funcionario.id} href={`/funcionarios/${funcionario.id}`}>
                                     <div className='bg-white shadow-xl rounded-lg p-2 my-2 flex cursor-pointer'>
@@ -35,7 +46,7 @@ export default function Funcionarios() {
                                                 </span>
                                                 <span
                                                     className="cursor-pointer text-red-700 hover:text-red-900 transition duration-500"
-                                                    >
+                                                >
                                                     <Trash />
                                                 </span>
                                             </div>

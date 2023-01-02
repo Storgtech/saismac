@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ArrowLeft, FolderOpen, MagnifyingGlass, PencilSimple, Trash } from 'phosphor-react';
 import { useState } from 'react';
-import { FaFilePdf } from 'react-icons/fa';
+import { FaFilePdf, FaTimes } from 'react-icons/fa';
 import { AsideMenu } from '../../components/AsideMenu';
 import { AskingConfirmation } from '../../components/AskingConfirmation/AskingConfirmation';
 import { Header } from '../../components/Header';
@@ -109,12 +109,16 @@ export default function Transporte() {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className='pr-12 flex items-center'>
+                                        <div className='pr-2 flex gap-3 items-center'>
                                             <span className='cursor-pointer bg-red-900 text-white text-xl rounded-full h-8 w-8 flex items-center justify-center'>
                                                 <FaFilePdf />
                                             </span>
-                                        </div>
-                                    </div>
+                                            <span
+                                                className='cursor-pointer bg-gray-100 text-gray-900 text-xl rounded-full h-8 w-8 flex items-center justify-center'
+                                                onClick={() => setReportType('')}>
+                                                <FaTimes />
+                                            </span>
+                                        </div>                                    </div>
                                     <div>
                                         <table className="table-auto shadow-2xl w-[50vw]">
                                             <thead className='w-full'>
@@ -155,12 +159,16 @@ export default function Transporte() {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className='pr-12 flex items-center'>
+                                        <div className='pr-2 flex gap-3 items-center'>
                                             <span className='cursor-pointer bg-red-900 text-white text-xl rounded-full h-8 w-8 flex items-center justify-center'>
                                                 <FaFilePdf />
                                             </span>
-                                        </div>
-                                    </div>
+                                            <span
+                                                className='cursor-pointer bg-gray-100 text-gray-900 text-xl rounded-full h-8 w-8 flex items-center justify-center'
+                                                onClick={() => setReportType('')}>
+                                                <FaTimes />
+                                            </span>
+                                        </div>                                    </div>
                                     <div>
                                         <table className="table-auto shadow-2xl w-[50vw]">
                                             <thead className='w-full'>
